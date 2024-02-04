@@ -1,7 +1,17 @@
 from pygame import *
 
 '''Необхідні класи'''
- 
+# музика
+mixer.init()
+mixer.music.load("stranger-things-124008.mp3")
+mixer.music.play()
+
+#текст
+font.init()
+font1 = font.Font(None,30)#шрифт та величина тексту
+text1 = font1.render("Рахунок",True,(0,0,0))
+
+
 # клас-батько для спрайтів
 class GameSprite(sprite.Sprite):
     #конструктор класу
@@ -15,7 +25,7 @@ class GameSprite(sprite.Sprite):
         self.rect.x = player_x
         self.rect.y = player_y
 
-    
+     
     def reset(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
 
@@ -73,7 +83,7 @@ while game:
 
     if sprite.collide_rect(player3,player1) or sprite.collide_rect(player3,player2):
         x*=-1    
-
+    window.blit(text1,(100,100))
     display.update()
     clock.tick(60)
     
